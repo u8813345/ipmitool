@@ -20,6 +20,10 @@ Field Replaceable Unit (FRU) inventory information, read and set LAN
 configuration parameters, and perform remote chassis power control.
 
 
+How to Build
+============
+$ autoreconf -fmi
+
 Background
 ==========
 I originally wrote ipmitool while between projects and employeed at Sun
