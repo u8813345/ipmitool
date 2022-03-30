@@ -53,6 +53,7 @@
 
 #define FRU_MULTIREC_CHUNK_SIZE     (255 + sizeof(struct fru_multirec_header))
 #define FRU_FIELD_VALID(a) (a && a[0])
+#define FRU_SIZE_MAX 0x10000
 
 static const char *section_id[4] = {
 	"Internal Use Section",
@@ -3343,16 +3344,15 @@ ipmi_fru_write_from_bin(struct ipmi_intf * intf,
 		printf("Fru Access = %xh\n", fru.access);
 	}
 
-	pFruBuf = malloc(fru.size);
+	pFruBuf = malloc(FRU_SIZE_MAX);
 	if (!pFruBuf) {
-		lprintf(LOG_ERR, "Cannot allocate %d bytes\n", fru.size);
+		lprintf(LOG_ERR, "Cannot allocate %d bytes\n", FRU_SIZE_MAX);
 		return;
 	}
 
 		pFile = fopen(pFileName, "rb");
 		if (pFile) {
-			len = fread(pFruBuf, 1, fru.size, pFile);
-			printf("Fru Size         : %d bytes\n", fru.size);
+			len = fread(pFruBuf, 1, FRU_SIZE_MAX, pFile);
 			printf("Size to Write    : %d bytes\n", len);
 			fclose(pFile);
 		} else {
