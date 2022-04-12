@@ -23,6 +23,7 @@ configuration parameters, and perform remote chassis power control.
 How to Build
 ============
 $ autoreconf -fmi
+$ sudo make install
 
 Background
 ==========
