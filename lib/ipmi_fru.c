@@ -499,11 +499,6 @@ write_fru_area(struct ipmi_intf * intf, struct fru_info *fru, uint8_t id,
 	uint16_t found_bloc = 0;
 
 	finish = doffset + length;        /* destination offset */
-	if (finish > fru->size)
-	{
-		lprintf(LOG_ERROR, "Return error");
-		return -1;
-	}
 
 	if (fru->access && ((doffset & 1) || (length & 1))) {
 		lprintf(LOG_ERROR, "Odd offset or length specified");
