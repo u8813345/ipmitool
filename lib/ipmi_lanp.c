@@ -245,7 +245,7 @@ get_lan_param_select(struct ipmi_intf *intf, uint8_t chan, int param, int select
 			specific_val2str(rsp->ccode,
 			                 get_lan_cc_vals,
 			                 completion_code_vals));
-		return NULL;
+		return rc;
 	}
 
 	p->data = rsp->data + 1;
